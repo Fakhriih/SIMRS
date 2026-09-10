@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  nama     String
+  username String @unique
+  password String
+  role     String
+}
+
+model Pasien {
+  id            Int         @id @default(autoincrement())
+  no_rm         String      @unique
+  nama          String
+  nik           String      @unique
+  tanggal_lahir DateTime
+  jenis_kelamin String
+  alamat        String
+  no_telp       String
+  Kunjungan     Kunjungan[]
+}
+
+model Dokter {
+  id             Int         @id @default(autoincrement())
+  nama           String
+  spesialisasi   String
+  jadwal_praktik String
+  Kunjungan      Kunjungan[]
+}
+
+model Kunjungan {
+  id         Int          @id @default(autoincrement())
+  pasien_id  Int
+  dokter_id  Int
+  tanggal    DateTime
+  poli       String
+  status     String
+  Pasien     Pasien       @relation(fields: [pasien_id], references: [id])
+  Dokter     Dokter       @relation(fields: [dokter_id], references: [id])
+  RekamMedis RekamMedis[]
+  Tagihan    Tagihan[]
+}
+
+model RekamMedis {
+  id           Int         @id @default(autoincrement())
+  kunjungan_id Int
+  keluhan      String
+  diagnosis    String
+  tindakan     String
+  Kunjungan    Kunjungan   @relation(fields: [kunjungan_id], references: [id])
+  ResepObat    ResepObat[]
+}
+
+model ResepObat {
+  id             Int        @id @default(autoincrement())
+  rekam_medis_id Int
+  nama_obat      String
+  dosis          String
+  jumlah         Int
+  RekamMedis     RekamMedis @relation(fields: [rekam_medis_id], references: [id])
+}
+
+model Obat {
+  id        Int    @id @default(autoincrement())
+  nama_obat String
+  stok      Int
+  satuan    String
+  harga     Float
+}
+
+model Tagihan {
+  id           Int       @id @default(autoincrement())
+  kunjungan_id Int
+  rincian      String
+  total        Float
+  status_bayar String
+  Kunjungan    Kunjungan @relation(fields: [kunjungan_id], references: [id])
+}
