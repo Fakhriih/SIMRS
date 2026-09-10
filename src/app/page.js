@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { loginAction } from "./actions/auth"
 
@@ -8,6 +8,12 @@ export default function LoginPage() {
   const router = useRouter()
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+
+  // BYPASS LOGIN UNTUK DEMO
+  // Langsung arahkan ke dashboard saat halaman dimuat
+  useEffect(() => {
+    router.push("/dashboard")
+  }, [router])
 
   async function handleSubmit(e) {
     e.preventDefault()
