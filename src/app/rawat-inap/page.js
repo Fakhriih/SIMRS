@@ -4,7 +4,7 @@ export default function PlaceholderPage() {
       <div className="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-4xl mb-4">
         🚧
       </div>
-      <h2 className="text-2xl font-bold text-slate-800 mb-2">Halaman Farmasi</h2>
+      <h2 className="text-2xl font-bold text-slate-800 mb-2">Halaman Rawat-inap</h2>
       <p className="text-slate-500">
         Modul ini masih dalam tahap pengembangan dan belum dapat diakses pada versi demo ini.
       </p>
