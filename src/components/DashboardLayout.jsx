@@ -9,8 +9,6 @@ export default function DashboardLayout({ children }) {
   const router = useRouter()
 
   const menus = [
-    { name: "Dashboard", path: "/dashboard", icon: "❖" },
-    { name: "Pendaftaran Pasien", path: "/pendaftaran", icon: "👥" },
     {
       name: "Kasir & Pembayaran",
       path: "/kasir",
@@ -20,11 +18,6 @@ export default function DashboardLayout({ children }) {
         { name: "Pembayaran", path: "/kasir/pembayaran", icon: "💵" },
       ],
     },
-    { name: "Rawat Inap", path: "/rawat-inap", icon: "🛏️" },
-    { name: "Farmasi & Obat", path: "/farmasi", icon: "🔗" },
-    { name: "Laboratorium", path: "/laboratorium", icon: "🧪" },
-    { name: "Laporan", path: "/laporan", icon: "📊" },
-    { name: "Pengaturan", path: "/pengaturan", icon: "⚙" },
   ]
 
   async function handleLogout() {
@@ -47,52 +40,49 @@ export default function DashboardLayout({ children }) {
   })
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] flex">
+    <div className="min-h-screen bg-slate-50 flex">
       {/* Sidebar */}
-      <aside className="w-[280px] bg-[#1e293b] text-white flex flex-col flex-shrink-0">
-        <div className="p-6 pb-4">
-          <h2 className="text-xl font-bold tracking-wide">SIM RS</h2>
-          <p className="text-slate-400 text-xs mt-1">SIMRS v3.2</p>
+      <aside className="w-[280px] bg-white border-r border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-sm">
+        <div className="p-8 pb-4">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">SIM RS</h2>
+          <p className="text-slate-500 text-sm mt-1">SIMRS v3.2</p>
         </div>
         
-        <nav className="flex-1 space-y-1 mt-4 overflow-y-auto pb-4">
+        <nav className="flex-1 px-4 space-y-1 mt-6 overflow-y-auto pb-4">
           {menus.map((menu) => {
             const isActive = pathname === menu.path || pathname.startsWith(menu.path + "/")
             return (
               <div key={menu.path}>
                 <Link
                   href={menu.children ? menu.children[0].path : menu.path}
-                  className={`flex items-center space-x-3 px-6 py-3 transition-colors ${
+                  className={`flex items-center space-x-3 px-5 py-3 rounded-lg transition-all duration-200 ${
                     isActive 
-                      ? "bg-[#334155] text-white border-l-4 border-emerald-500 font-medium" 
-                      : "text-slate-400 hover:bg-[#334155]/50 border-l-4 border-transparent"
+                      ? "bg-primary-gradient text-white font-semibold shadow-sm" 
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium"
                   }`}
                 >
-                  <span className="w-5 text-center">{menu.icon}</span>
+                  <span className="w-5 text-center text-lg">{menu.icon}</span>
                   <span className="text-sm">{menu.name}</span>
                 </Link>
-
-                {/* Sub-menu items (Hanya ditampilkan jika punya anak, tidak dropdown di sidebar desain ini, 
-                    tapi kita biarkan ada sub-menu jika diperlukan, atau hanya biarkan menu utama aktif) */}
               </div>
             )
           })}
         </nav>
 
         {/* User Profile at Bottom Sidebar */}
-        <div className="p-5 border-t border-slate-700/50 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold overflow-hidden border border-slate-600">
+        <div className="p-5 border-t border-slate-100 flex items-center gap-3 mb-2 mx-2">
+          <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold overflow-hidden border border-slate-200">
             {/* Foto profil dummy */}
             <img src="https://ui-avatars.com/api/?name=Anisa+Putri&background=0D8ABC&color=fff" alt="User" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-white truncate">dr. Anisa Putri</p>
-            <p className="text-xs text-slate-400 truncate">Admin Kasir</p>
+            <p className="text-sm font-semibold text-slate-800 truncate">dr. Anisa Putri</p>
+            <p className="text-xs text-slate-500 truncate">Admin Kasir</p>
           </div>
           <button 
             onClick={handleLogout}
             title="Keluar"
-            className="text-slate-400 hover:text-white transition-colors"
+            className="text-slate-400 hover:text-red-600 transition-colors p-2 rounded-md hover:bg-slate-50"
           >
             🚪
           </button>
@@ -100,9 +90,9 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden">
+      <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
         {/* Top Header */}
-        <header className="bg-white px-8 py-4 flex justify-between items-center z-10">
+        <header className="bg-white shadow-sm border-b border-slate-200 px-10 py-5 flex justify-between items-center z-10">
           <div className="text-[13px] font-medium text-slate-500 flex items-center gap-2">
             {breadcrumb.split(" > ").map((part, index, arr) => (
               <span key={index} className="flex items-center gap-2">
@@ -125,9 +115,9 @@ export default function DashboardLayout({ children }) {
           </div>
         </header>
         
-        <div className="flex-1 overflow-auto p-8 bg-[#f8f9fa]">
+        <div className="flex-1 overflow-auto p-10">
           {/* Wrapper content putih dengan border radius dan bayangan tipis */}
-          <div className="bg-white rounded-[16px] border border-slate-200 shadow-sm p-8 min-h-[calc(100vh-140px)]">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8 min-h-[calc(100vh-140px)]">
             {children}
           </div>
         </div>

@@ -80,12 +80,12 @@ async function main() {
   // 3. PASIEN
   // ══════════════════════════════════════════════════
   const dummyPasiens = [
-    { no_rm: 'RM001', nama: 'Eka Prasetya',    nik: '35700000001', tanggal_lahir: new Date('1990-01-15'), jenis_kelamin: 'L', alamat: 'Jl. Merdeka 1, Surabaya',     no_telp: '081234567891' },
-    { no_rm: 'RM002', nama: 'Dwi Lestari',     nik: '35700000002', tanggal_lahir: new Date('1992-02-20'), jenis_kelamin: 'P', alamat: 'Jl. Kemerdekaan 2, Malang',    no_telp: '081234567892' },
-    { no_rm: 'RM003', nama: 'Tri Wahyudi',     nik: '35700000003', tanggal_lahir: new Date('1985-03-10'), jenis_kelamin: 'L', alamat: 'Jl. Pahlawan 3, Sidoarjo',     no_telp: '081234567893' },
-    { no_rm: 'RM004', nama: 'Catur Wulandari', nik: '35700000004', tanggal_lahir: new Date('1978-04-25'), jenis_kelamin: 'P', alamat: 'Jl. Sudirman 4, Gresik',       no_telp: '081234567894' },
-    { no_rm: 'RM005', nama: 'Panca Nugroho',   nik: '35700000005', tanggal_lahir: new Date('2000-05-05'), jenis_kelamin: 'L', alamat: 'Jl. Diponegoro 5, Mojokerto',  no_telp: '081234567895' },
-    { no_rm: 'RM006', nama: 'Sari Indah',      nik: '35700000006', tanggal_lahir: new Date('1995-06-12'), jenis_kelamin: 'P', alamat: 'Jl. Ahmad Yani 6, Surabaya',   no_telp: '081234567896' },
+    { no_rm: 'RM001', nama: 'Eka Prasetya', nik: '35700000001', tanggal_lahir: new Date('1990-01-15'), jenis_kelamin: 'L', alamat: 'Jl. Merdeka 1, Surabaya', no_telp: '081234567891' },
+    { no_rm: 'RM002', nama: 'Dwi Lestari', nik: '35700000002', tanggal_lahir: new Date('1992-02-20'), jenis_kelamin: 'P', alamat: 'Jl. Kemerdekaan 2, Malang', no_telp: '081234567892' },
+    { no_rm: 'RM003', nama: 'Tri Wahyudi', nik: '35700000003', tanggal_lahir: new Date('1985-03-10'), jenis_kelamin: 'L', alamat: 'Jl. Pahlawan 3, Sidoarjo', no_telp: '081234567893' },
+    { no_rm: 'RM004', nama: 'Catur Wulandari', nik: '35700000004', tanggal_lahir: new Date('1978-04-25'), jenis_kelamin: 'P', alamat: 'Jl. Sudirman 4, Gresik', no_telp: '081234567894' },
+    { no_rm: 'RM005', nama: 'Panca Nugroho', nik: '35700000005', tanggal_lahir: new Date('2000-05-05'), jenis_kelamin: 'L', alamat: 'Jl. Diponegoro 5, Mojokerto', no_telp: '081234567895' },
+    { no_rm: 'RM006', nama: 'Sari Indah', nik: '35700000006', tanggal_lahir: new Date('1995-06-12'), jenis_kelamin: 'P', alamat: 'Jl. Ahmad Yani 6, Surabaya', no_telp: '081234567896' },
   ]
 
   const pasiens = []
@@ -101,11 +101,11 @@ async function main() {
   // ══════════════════════════════════════════════════
   await prisma.obat.deleteMany()
   const obats = [
-    { nama_obat: 'Paracetamol 500mg',  stok: 200, satuan: 'Tablet', harga: 1500 },
-    { nama_obat: 'Amoxicillin 500mg',  stok: 150, satuan: 'Kapsul', harga: 3500 },
-    { nama_obat: 'Omeprazole 20mg',    stok: 100, satuan: 'Kapsul', harga: 5000 },
-    { nama_obat: 'Antasida Sirup',     stok: 80,  satuan: 'Botol',  harga: 15000 },
-    { nama_obat: 'Vitamin C 1000mg',   stok: 300, satuan: 'Tablet', harga: 2000 },
+    { nama_obat: 'Paracetamol 500mg', stok: 200, satuan: 'Tablet', harga: 1500 },
+    { nama_obat: 'Amoxicillin 500mg', stok: 150, satuan: 'Kapsul', harga: 3500 },
+    { nama_obat: 'Omeprazole 20mg', stok: 100, satuan: 'Kapsul', harga: 5000 },
+    { nama_obat: 'Antasida Sirup', stok: 80, satuan: 'Botol', harga: 15000 },
+    { nama_obat: 'Vitamin C 1000mg', stok: 300, satuan: 'Tablet', harga: 2000 },
   ]
   for (const o of obats) {
     await prisma.obat.create({ data: o })
