@@ -32,22 +32,22 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg border border-blue-100">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-blue-800 mb-2">SIMRS</h1>
-          <p className="text-slate-500">Sistem Informasi Manajemen Rumah Sakit</p>
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+      <div className="max-w-md w-full bg-white p-10 rounded-xl shadow-sm border border-slate-200">
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-slate-800 mb-3">SIMRS</h1>
+          <p className="text-slate-500 text-sm">Sistem Informasi Manajemen Rumah Sakit</p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm text-center">
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 rounded-lg text-sm text-center font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1" htmlFor="username">
+            <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="username">
               Username
             </label>
             <input
@@ -55,13 +55,13 @@ export default function LoginPage() {
               name="username"
               type="text"
               required
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal outline-none transition-all text-slate-800"
               placeholder="Masukkan username"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1" htmlFor="password">
+            <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="password">
               Password
             </label>
             <input
@@ -69,7 +69,7 @@ export default function LoginPage() {
               name="password"
               type="password"
               required
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal outline-none transition-all text-slate-800"
               placeholder="Masukkan password"
             />
           </div>
@@ -77,14 +77,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full mt-2 bg-primary-gradient hover:opacity-90 text-white font-semibold py-3 rounded-lg transition-opacity disabled:opacity-70 disabled:cursor-not-allowed shadow-sm"
           >
             {isLoading ? "Memproses..." : "Masuk"}
           </button>
         </form>
         
-        <div className="mt-6 text-center text-sm text-slate-500">
-          Gunakan username: <strong>admin</strong> / password: <strong>password123</strong>
+        <div className="mt-8 text-center text-sm text-slate-400">
+          Gunakan username: <strong className="text-slate-600">admin</strong> / password: <strong className="text-slate-600">password123</strong>
         </div>
       </div>
     </div>
