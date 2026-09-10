@@ -1,8 +1,14 @@
-export default function FarmasiPage() {
+import { getDaftarObat } from "@/app/actions/farmasi"
+import DaftarObat from "./components/DaftarObat"
+
+export const dynamic = 'force-dynamic'
+
+export default async function FarmasiPage() {
+  const obatList = await getDaftarObat()
+
   return (
     <div>
-      <h2 className="text-2xl font-bold text-slate-800 mb-4">Apotek & Farmasi</h2>
-      <p className="text-slate-500 leading-relaxed">Halaman ini masih kosong (placeholder) dan akan diisi oleh tim Anda.</p>
+      <DaftarObat initialObat={obatList} />
     </div>
   )
 }
