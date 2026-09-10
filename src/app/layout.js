@@ -1,33 +1,28 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
+import ClientLayoutWrapper from "./ClientLayoutWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-poppins",
 });
 
 export const metadata = {
-  title: "SIMRS - Sistem Terpadu",
-  description: "Sistem Informasi Manajemen Rumah Sakit Terpadu",
+  title: "SIMRS Dashboard",
+  description: "Sistem Informasi Manajemen Rumah Sakit",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} h-full antialiased font-sans`}
     >
-      <body className="min-h-full flex bg-[#f8fafc] text-slate-800 font-sans">
-        <Sidebar />
-        <div className="flex-1 flex flex-col min-w-0 min-h-screen overflow-y-auto">
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-500">
+        <ClientLayoutWrapper>
           {children}
-        </div>
+        </ClientLayoutWrapper>
       </body>
     </html>
   );
