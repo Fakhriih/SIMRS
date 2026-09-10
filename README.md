@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SIMRS (Sistem Informasi Manajemen Rumah Sakit)
 
-## Getting Started
+Proyek ini adalah prototipe aplikasi web SIMRS sederhana untuk keperluan demo. 
+Dibuat menggunakan Next.js (App Router), Tailwind CSS, Prisma ORM, dan database SQLite lokal.
 
-First, run the development server:
+## Persyaratan
+- Node.js versi 18+ terinstall
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Cara Menjalankan Proyek Secara Lokal
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Install Dependencies**
+   Jalankan perintah berikut di terminal (pastikan berada di folder `SIMRS`):
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+2. **Sinkronisasi Database & Seed Data**
+   Database SQLite sudah ada, tetapi jika ingin mereset atau menerapkan ulang:
+   ```bash
+   npx prisma db push
+   npm run prisma seed
+   ```
+   *Catatan: Script seed dijalankan menggunakan `npm run prisma seed`.*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Jalankan Server Development**
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+4. Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-To learn more about Next.js, take a look at the following resources:
+## Akses Akun Dummy
+Gunakan salah satu kredensial berikut untuk login:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Admin**
+  - Username: `admin`
+  - Password: `password123`
+- **Petugas Pendaftaran**
+  - Username: `petugas`
+  - Password: `password123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Struktur Halaman
+- `/` - Halaman Login
+- `/dashboard` - Dashboard Utama
+- `/pendaftaran` - Modul Pendaftaran
+- `/rawat-jalan` - Modul Rawat Jalan
+- `/farmasi` - Modul Apotek/Farmasi
+- `/kasir` - Modul Pembayaran
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Selamat mengerjakan!
